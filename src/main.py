@@ -1,5 +1,6 @@
 from pprint import pprint
 from exceptions import InsufficientBalanceError, FinancialOperationError
+from reader import FileReader
 
 class Customer:
     def __init__(self, name, cpf, occupation):
@@ -106,13 +107,16 @@ def main():
 # if __name__ == "__main__":
 #     main()
 
-transaction_account1 = TransactionAccount(None, 400, 1234567)
-transaction_account2 = TransactionAccount(None, 401, 1234568)
+# transaction_account1 = TransactionAccount(None, 400, 1234567)
+# transaction_account2 = TransactionAccount(None, 401, 1234568)
+#
+# try:
+#     transaction_account1.withdraw(1000)
+#     print("Transaction Account1 Balance: ",transaction_account1.balance)
+#     print("Transaction Account2 Balance: ",transaction_account2 .balance)
+# except FinancialOperationError as E:
+#     breakpoint()
+#     pass
 
-try:
-    transaction_account1.withdraw(1000)
-    print("Transaction Account1 Balance: ",transaction_account1.balance)
-    print("Transaction Account2 Balance: ",transaction_account2 .balance)
-except FinancialOperationError as E:
-    breakpoint()
-    pass
+with FileReader("file.txt") as reader:
+    reader.read_next_line()
